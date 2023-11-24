@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반복문 연습</title>
+  </head>
+  <body></body>
+  <script>
+    // 1부터 100까지 출력
+    document.write("<h1>1부터 100까지 출력</h1>");
+    for (let i = 1; i <= 100; i++) {
+      document.write('<span style="font-size: 32px;">' + i + "&nbsp;</span>");
+    }
+    document.write("<hr/>");
+
+    // 10부터 1까지 출력
+    document.write("<h1>10부터 1까지 출력</h1>");
+    for (let i = 10; i >= 1; i--) {
+      document.write('<span style="font-size: 32px;">' + i + "&nbsp;</span>");
+    }
+    document.write("<hr/>");
+
+    // 0부터 10까지의 짝수만 출력
+    document.write("<h1>0부터 10까지의 짝수만 출력</h1>");
+    // for (let i = 0; i <= 10; i++) {
+    //   if (i % 2 == 0) {
+    //     document.write('<span style="font-size: 32px;">' + i + "&nbsp;</span>");
+    //   }
+    // }
+    for (let i = 0; i <= 10; i += 2) {
+      document.write('<span style="font-size: 32px;">' + i + "&nbsp;</span>");
+    }
+    document.write("<hr/>");
+
+    // 1부터 100까지 짝수의 합을 구해보세요.
+    document.write("<h1>1부터 100까지 짝수의 합</h1>");
+    let sum = 0;
+    for (let i = 0; i <= 100; i += 2) {
+      sum += i;
+    }
+    document.write('<span style="font-size: 32px;">' + sum + "&nbsp;</span>");
+    document.write("<hr/>");
+
+    // 별찍기
+    // *****
+    // *****
+    // *****
+    // *****
+    // *****
+    document.write("<h1>별찍기 직각사각형</h1>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        document.write("<span style='font-size: 32px;'>*</span>");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr/>");
+
+    // *
+    // **
+    // ***
+    // ****
+    // *****
+    document.write("<h1>별찍기 직각삼각형(왼쪽)</h1>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j <= i; j++) {
+        document.write("<span style='font-size: 32px;'>*</span>");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr/>");
+
+    //     *
+    //    **
+    //   ***
+    //  ****
+    // *****
+    document.write("<h1>별찍기 직각삼각형(오른쪽)</h1>");
+    for (let i = 1; i <= 5; i++) {
+      for (let j = 5; j > i; j--) {
+        document.write("&nbsp;");
+      }
+      for (let k = 1; k <= i; k++) {
+        document.write("<span>*</span>");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr/>");
+
+    // *****
+    // ****
+    // ***
+    // **
+    // *
+    document.write("<h1>별찍기 역직각삼각형(왼쪽)</h1>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 5; j > i; j--) {
+        document.write("<span style='font-size: 32px;'>*</span>");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr/>");
+
+    // *****
+    //  ****
+    //   ***
+    //    **
+    //     *
+    document.write("<h1>별찍기 역직각삼각형(오른쪽)</h1>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < i; j++) {
+        document.write("&nbsp;");
+      }
+      for (let k = 5; k > i; k--) {
+        document.write("<span>*</span>");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr/>");
+
+    //     *
+    //    ***
+    //   *****
+    //  *******
+    // *********
+    document.write("<h1>별찍기 정삼각형(위쪽)</h1>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 4; j > i; j--) {
+        document.write("&nbsp;");
+      }
+      // for (let k = 0; k <= i; k++) {
+      //   document.write("*");
+      // }
+      // for (let z = 1; z <= i; z++) {
+      //   document.write("*");
+      // }
+      for (let k = 0; k <= i * 2; k++) {
+        document.write("*");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr/>");
+
+    // *********
+    //  *******
+    //   *****
+    //    ***
+    //     *
+    document.write("<h1>별찍기 정삼각형(아래쪽)</h1>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < i; j++) {
+        document.write("&nbsp;");
+      }
+      // for (let k = 5; k > i; k--) {
+      //   document.write("*");
+      // }
+      // for (let z = 4; z > i; z--) {
+      //   document.write("*");
+      // }
+      for (let k = 8; k >= i * 2; k--) {
+        document.write("*");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr/>");
+
+    //     *
+    //    ***
+    //   *****
+    //  *******
+    // *********
+    //  *******
+    //   *****
+    //    ***
+    //     *
+    document.write("<h1>별찍기 마름모형</h1>");
+    for (let i = 0; i < 5; i++) {
+      for (let j = 4; j > i; j--) {
+        document.write("&nbsp;");
+      }
+      for (let k = 0; k <= i; k++) {
+        document.write("*");
+      }
+      for (let z = 1; z <= i; z++) {
+        document.write("*");
+      }
+      document.write("<br/>");
+    }
+
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j <= i; j++) {
+        document.write("&nbsp;");
+      }
+      for (let k = 4; k > i; k--) {
+        document.write("*");
+      }
+      for (let z = 3; z > i; z--) {
+        document.write("*");
+      }
+      document.write("<br/>");
+    }
+    document.write("<hr>");
+
+    document.write("<h1>별찍기 마름모형(repeat 함수 이용)</h1>");
+    // 문자열.repeat(반복횟수);
+    for (let i = 1; i <= 5; i++) {
+      // 4321 => 5-i
+      // 13579 => 2*i-1
+      document.write("&nbsp;".repeat(5 - i) + "*".repeat(2 * i - 1) + "<br/>");
+    }
+    for (let j = 4; j >= 1; j--) {
+      // 1234 => 5-j
+      // 7531 => 2*j-1
+      document.write("&nbsp;".repeat(5 - j) + "*".repeat(2 * j - 1) + "<br/>");
+    }
+  </script>
+</html>

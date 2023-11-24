@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tank</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #stage {
+        width: 600px;
+        height: 600px;
+        background-color: green;
+        overflow: hidden;
+        position: relative;
+      }
+      #tank {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -25px;
+        margin-top: -25px;
+        transition: all 0.2s;
+      }
+      #bullet {
+        left: -10px;
+        top: -10px;
+        position: absolute;
+        margin-top: -5px;
+        margin-left: -5px;
+      }
+      .enemy {
+        position: absolute;
+        margin-left: -25px;
+        margin-top: -25px;
+        transition: all 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage">
+      <img id="tank" src="images/tank.jpg" alt="주인공" />
+      <img id="bullet" src="images/bullet.jpg" alt="포탄" />
+    </div>
+
+    <script src="script/script.js"></script>
+  </body>
+</html>

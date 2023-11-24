@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html and text</title>
+  </head>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <body>
+    <p>
+      1
+      <span>홍길동</span>
+    </p>
+    <p>2<span>개나리</span></p>
+    <p>3<span>진달래</span></p>
+  </body>
+  <script>
+    // $("p").on("click", function () {
+    //   //   console.log($(this).html());
+    //   console.log($(this).text());
+    // });
+
+    // const ps = document.querySelectorAll("p");
+    // ps.forEach((value, index, array) => {
+    //   console.log(el);
+    // });
+    const pTags = $("p");
+    console.log(pTags.length);
+    pTags.each((index, item) => {
+      //   console.log(item.innerHTML);
+      console.log($(item).html());
+    });
+
+    // jQuery each 함수
+    $.each(pTags, function (index, item) {
+      //
+    });
+
+    $("p").each(function (index, item) {
+      //
+    });
+  </script>
+</html>

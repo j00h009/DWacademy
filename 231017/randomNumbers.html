@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>랜덤숫자 출력</title>
+  </head>
+  <style>
+    div {
+      background: yellow;
+      border: 1px solid red;
+      width: 300;
+      height: 500;
+    }
+  </style>
+  <body>
+    <input type="button" value="시작" onclick="randProc()" /> <br />
+    <hr color="blue" />
+    <!-- 시작 버튼 누르면 랜덤수 5개 를 출력 -->
+    <h1>출력위치</h1>
+    <div id="res">
+      <!-- <p>숫자다섯개</p> -->
+    </div>
+  </body>
+  <script>
+    function randProc() {
+      //   alert("randProc 함수 입니다.");
+      let arr = [];
+      for (let i = 0; i < 5; i++) {
+        arr.push(parseInt(Math.random() * 100 + 1));
+      }
+      //   console.log(arr);
+      const res = document.getElementById("res");
+      //   res.innerHTML = "<p>54,23,67,11,1</p>";
+      const p = document.createElement("p");
+      p.innerHTML = arr.toString();
+      //   console.log(p);
+      res.append(p);
+
+      let template = `<p>${arr.toString()}</p>`;
+      res.insertAdjacentHTML("beforeend", template);
+      // 위치 : beforebegin, beforeend, afterbegin, afterend
+
+      //   let str = (document.createElement("p").innerHTML = arr.toString());
+      //   document.getElementById("res").append(str);
+    }
+  </script>
+</html>

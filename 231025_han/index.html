@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal window</title>
+    <meta name="author" content="Jiho Han" />
+    <meta name="keywords" content="팝업, 모달, 모달창, 레이어팝업, 환기" />
+    <meta
+      name="description"
+      content="HTML, CSS를 이용해 기존의 내용은 그대로
+    유지하면서 새로운 내용을 환기하여 보여주는 modal window를 제작할 수 있다."
+    />
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>애국가</h1>
+    <p>동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세</p>
+
+    <h1>훈민뎡음</h1>
+    <p>
+      나랏말싸미 듕귁에 달아 문짱와로 서르 사맛디 아니할쌔 녀린백셩이 할배이셔도
+      마참내 제뜨들 시려펴디 못할노미 하니라
+    </p>
+
+    <button id="modal_open" type="button">모달 열기</button>
+
+    <div id="modal_back">
+      <div id="modal_win">
+        <div id="modal_header">
+          <h4>Modal Window</h4>
+          <button id="modal_close" type="button">&times;</button>
+        </div>
+        <div id="modal_body">
+          asdf dasf sa fsdaf sa fsa fasdfsd fsd fsd fsadf sda fdas sdf asdf dasf
+          sa fsdaf sa fsa fasdfsd fsd fsd fsadf sda fdas sdf asdf dasf sa fsdaf
+          sa fsa fasdfsd fsd fsd fsadf sda fdas sdf asdf dasf sa fsdaf sa fsa
+          fasdfsd fsd fsd fsadf sda fdas sdf asdf dasf sa fsdaf sa fsa fasdfsd
+          fsd fsd fsadf sda fdas sdf asdf dasf sa fsdaf sa fsa fasdfsd fsd fsd
+          fsadf sda fdas sdf
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // #modal_open이 눌리면 이런일이벌어질것이다.
+      //    #modal_back의 스타일 중 display의 값을 "block"으로 변경한다.
+      //    (숨겨졌던 #modal_back이 보여진다.)
+      //   document.getElementById("modal_open").onclick = function () {
+      //     document.getElementById("modal_back").style.display = "block";
+      //   };
+      $("#modal_open").click(function () {
+        $("#modal_back").fadeIn(200, function () {
+          $("#modal_win").animate({ marginTop: 0 }, 200);
+        });
+      });
+
+      // #modal_close가 눌리면 이런일이벌어질것이다.
+      //    #modal_back의 스타일 중 display의 값을 "none"으로 변경한다.
+      //    (보여졌던 #modal_back이 숨겨진다.)
+      //   document.getElementById("modal_close").onclick = function () {
+      //     document.getElementById("modal_back").style.display = "none";
+      //   };
+      $("#modal_close").click(function () {
+        $("#modal_win").animate({ marginTop: "1000px" }, 200, function () {
+          $("#modal_back").fadeOut(200);
+        });
+      });
+    </script>
+  </body>
+</html>

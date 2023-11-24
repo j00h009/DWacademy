@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change on/off</title>
+  </head>
+  <style>
+    #wrapper {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, gray, white);
+      border: 3px solid gray;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* #wrapper > div { */
+    .imgWrapper {
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 5px solid black;
+    }
+    div.on {
+      border: 20px solid black;
+    }
+    /* div {
+      border: 5px solid black;
+    } */
+    img {
+      width: 50%;
+      height: 50%;
+      object-fit: cover;
+    }
+    img.on {
+      filter: opacity(0.5) drop-shadow(0 0 0 red) saturate(1000%) blur(3px);
+    }
+    img {
+      filter: contrast(0%);
+    }
+    img:hover {
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="imgWrapper" class="imgWrapper">
+        <img src="전원.png" class="" />
+      </div>
+    </div>
+  </body>
+  <script>
+    const imgTag = document.querySelector("img");
+    const divTag = document.querySelector("#imgWrapper");
+    imgTag.addEventListener("click", function () {
+      //   const currentClass = imgTag.classList[0];
+      //   if (currentClass == "off") {
+      //     imgTag.classList.remove("off");
+      //     imgTag.classList.add("on");
+      //     divTag.classList.remove("off");
+      //     divTag.classList.add("on");
+      //   } else {
+      //     imgTag.classList.remove("on");
+      //     imgTag.classList.add("off");
+      //     divTag.classList.remove("on");
+      //     divTag.classList.add("off");
+      //   }
+
+      imgTag.classList.toggle("on");
+      divTag.classList.toggle("on");
+    });
+  </script>
+</html>

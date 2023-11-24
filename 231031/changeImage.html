@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change image</title>
+  </head>
+  <style></style>
+  <body>
+    <img id="image" src="시바.png" width="500" height="auto" />
+    <script>
+      function changeImage() {
+        document.getElementById("image").src = "검정시바.jpg";
+      }
+    </script>
+    <input type="button" onclick="changeImage()" value="눌러보세요" />
+  </body>
+</html>

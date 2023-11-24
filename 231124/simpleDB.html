@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>simpleDB</title>
+  </head>
+  <body>
+    <!-- 간단한 로컬스토리지 이용한 작업 -->
+    <div class="container">
+      <div class="search">
+        <input class="search-input" placeholder="ID입력" />
+        <button class="search-btn" onclick="{searchId()}">검색</button>
+        <p class="msg"></p>
+      </div>
+      <hr />
+      <div class="content">
+        <label for="id">ID</label>
+        <input id="id" /><br />
+        <label for="name">이름</label>
+        <input id="name" /><br />
+        <label for="gender">성별</label>
+        <input id="gender" /><br />
+        <label for="job">직업</label>
+        <input id="job" /><br />
+        <label for="address">주소</label>
+        <input id="address" /><br />
+        <button class="submit" onclick="{register()}">등록</button>
+      </div>
+    </div>
+  </body>
+  <script src="simpleDB.js"></script>
+</html>

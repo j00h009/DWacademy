@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String 함수 연습</title>
+  </head>
+  <body></body>
+  <script>
+    // 주어진 문자열의 홀수번째 문자는 대문자로, 짝수번째 문자는 소문자로 변경해 주세요.
+    // "try hello world"
+    const str = "try hello world";
+    function toUpperLowerCase(string) {
+      let result = "";
+      for (let i = 0; i < string.length; i++) {
+        // if (i % 2 == 0) {
+        //   result += string[i].toUpperCase();
+        //   //   result += string.charAt(i).toUpperCase();
+        // } else {
+        //   result += string[i].toLowerCase();
+        //   //   result += string.charAt(i).toLowerCase();
+        // }
+
+        result +=
+          i % 2 == 0 ? string[i].toUpperCase() : string[i].toLowerCase();
+      }
+      return result;
+    }
+
+    document.write(`<h1>1번문제 결과 : ${toUpperLowerCase(str)}</h1>`);
+
+    // 문자열의 길이가 4 혹은 6 이고, 숫자로만 구성돼있는지 확인해주는
+    // 함수를 만들어보세요.
+    // "a234" ==> false / "1234" ==> true
+    const str2 = "a234";
+    const str3 = "1234";
+    function checkStr(s) {
+      //   if (s.length == 4 || s.length == 6) {
+      //     if (s.replace(/[0-9]/g, "").length == 0) {
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   } else {
+      //     return false;
+      //   }
+      return (
+        (s.length == 4 || s.length == 6) && s.replace(/[0-9]/g, "").length == 0
+      );
+    }
+
+    document.write(`<h1>2번문제 결과 : ${checkStr(str2)}</h1>`);
+    document.write(`<h1>2번문제 결과 : ${checkStr(str3)}</h1>`);
+  </script>
+</html>

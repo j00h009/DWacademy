@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>break & continue 연습</title>
+  </head>
+  <body></body>
+  <script>
+    // 1부터 200까지의 짝수의 합을 구하는 프로그램을 작성하시오.(continue를 이용)
+    document.write("<h2>1부터 200까지의 짝수의 합(continue 사용)</h2>");
+    let sum = 0;
+    for (let i = 1; i <= 200; i++) {
+      if (i % 2 == 1) {
+        continue;
+      }
+      sum += i;
+    }
+    document.write(`<br><h4>sum : ${sum}</h4>`);
+    document.write("<hr>");
+
+    // 사용자가 입력한 값을 계속 더하고, 사용자가 0을 입력하면 그때까지
+    // 누적된 값을 출력하는 프로그램을 작성하시오.
+    sum = 0;
+    // while (true) {
+    //   let inputNum = +prompt("숫자를 입력하세요.(0을 입력하면 종료됩니다.)");
+    //   //   console.log(typeof inputNum);
+    //   if (inputNum == 0) {
+    //     break;
+    //   }
+    //   sum += inputNum;
+    // }
+    document.write(`<h4>지금까지 입력한 값의 합 : ${sum}</h4>`);
+    document.write("<hr>");
+
+    // 1~10까지 반복되는 2개의 for문을 이용해서
+    // i와 k를 더한 합이 3의 배수일때만 출력 continue를 이용
+    // ex) i : OO, k : OO, 결과 : OO
+    for (let i = 1; i <= 10; i++) {
+      for (let k = 1; k <= 10; k++) {
+        if ((i + k) % 3 !== 0) {
+          continue;
+        }
+        document.write(`<h4>i : ${i}, k : ${k}, 결과 : ${i + k}</h4>`);
+      }
+    }
+    document.write("<hr>");
+
+    // 1~100 까지 중 2의 배수이면서 3의 배수인것만 출력
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 == 0 && i % 3 == 0) {
+        document.write(`<h4>i 값 : ${i}</h4>`);
+      }
+    }
+    document.write("<hr>");
+
+    // 두 수를 입력(prompt) 두수의 합이 100이상일이때만 출력
+    // continue를 이용 , 두수 모두 0 이 입력되면 종료
+    while (true) {
+      let inputNum1 = +prompt(
+        "첫번째 숫자를 입력하세요.(0을 입력하면 종료됩니다.)"
+      );
+      let inputNum2 = +prompt(
+        "두번째 숫자를 입력하세요.(0을 입력하면 종료됩니다.)"
+      );
+
+      if (inputNum1 + inputNum2 >= 100) {
+        document.write(
+          `<h4>첫번째 수 : ${inputNum1}, 두번째 수 : ${inputNum2}, 합 : ${
+            inputNum1 + inputNum2
+          }</h4>`
+        );
+      } else if (inputNum1 == 0 && inputNum2 == 0) {
+        break;
+      } else {
+        continue;
+      }
+    }
+  </script>
+</html>

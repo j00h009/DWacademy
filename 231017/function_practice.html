@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수 연습</title>
+  </head>
+  <body>
+    <p id="aa"></p>
+  </body>
+  <script>
+    function sub(a, b) {
+      return a + b;
+    }
+    window.onload = function () {
+      //var res =  sub(4,5);
+      //document.getElementById("aa").innerHTML = res;
+      document.getElementById("aa").innerHTML = sub(4, 5);
+    };
+
+    // 지역 변수
+    function localNum() {
+      //   var num = 10;
+      num = 10;
+      document.write(
+        // `함수 내부에서 변수 num의 타입은 ${typeof num} 입니다.<br>`
+        `<h3>함수 내부에서 변수 num의 값은 ${num} 입니다.</h3>`
+      );
+    }
+    localNum();
+    document.write(
+      //   `함수의 호출이 끝난 뒤 변수 num의 타입은 ${typeof num} 입니다.<br>`
+      `<h3>함수의 호출이 끝난 뒤 변수 num의 값은 ${num} 입니다.</h3>`
+    );
+
+    // 전역 변수
+    var num = 10;
+    function globalNum() {
+      var num = 20;
+      document.write(`<h3>함수 내부에서 변수 num의 값은 ${num}입니다.</h3>`);
+      document.write(
+        `<h3>함수 내부에서 전역 변수 num의 값은 ${window.num}입니다.</h3>`
+      );
+      //   num = 20;
+    }
+    globalNum();
+    document.write(
+      `<h3>함수의 호출이 끝난 뒤 변수 num의 값은 ${num}입니다.</h3>`
+    );
+
+    // 함수 유효 범위
+    let x = 10,
+      y = 20;
+    function sub() {
+      return x - y;
+    }
+    document.write(`<h3>${sub()}</h3>`);
+
+    function parentFunc() {
+      let x = 1,
+        y = 2;
+      function add() {
+        return x + y;
+      }
+      return add();
+    }
+    document.write(`<h3>${parentFunc()}</h3>`);
+
+    // 매개변수
+    const addNum = (x, y, z) => {
+      console.log(`x : ${x}, y : ${y}, z : ${z}`);
+      if (x === undefined) x = 0;
+      if (y === undefined) y = 0;
+      if (z === undefined) z = 0;
+      return x + y + z;
+    };
+
+    document.write(`<h3>${addNum(1, 2, 3)}</h3>`);
+    document.write(`<h3>${addNum(1, 2)}</h3>`);
+    document.write(`<h3>${addNum(1)}</h3>`);
+    document.write(`<h3>${addNum()}</h3>`);
+
+    document.write("<hr>");
+    // arguments 객체
+    const addNum2 = function () {
+      let sum = 0;
+      // arguments 객체는 함수가 호출될 때 전달된 인수를 배열 형태로 저장하고 있다.
+      for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+      }
+      return sum;
+    };
+    document.write(`<h3>${addNum2(1, 2, 3)}</h3>`);
+    document.write(`<h3>${addNum2(1, 2)}</h3>`);
+    document.write(`<h3>${addNum2(1)}</h3>`);
+    document.write(`<h3>${addNum2()}</h3>`);
+    document.write(`<h3>${addNum2(1, 2, 3, 4, 5, 6, 7, 8, 9)}</h3>`);
+  </script>
+</html>

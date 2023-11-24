@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>capturing</title>
+  </head>
+  <style>
+    body * {
+      border: 3px solid blue;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <form>
+      FORM
+      <div>
+        DIV
+        <p>P</p>
+      </div>
+    </form>
+  </body>
+  <script>
+    const allEl = document.querySelectorAll("*");
+    for (let elem of allEl) {
+      console.log(elem);
+      elem.addEventListener(
+        "click",
+        function (e) {
+          alert(`캡쳐링: ${elem.tagName}`);
+          //   }, {capture: true});
+        },
+        true
+      );
+      elem.addEventListener("click", function (e) {
+        alert(`버블링: ${elem.tagName}`);
+      });
+    }
+  </script>
+</html>

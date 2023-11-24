@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수 연습</title>
+  </head>
+  <body>
+    <div id="name"></div>
+  </body>
+  <script>
+    // 이름을 prompt로 입력 받는다
+    const userName = prompt("이름을 입력하세요.");
+    // 색상명을 prompt로 입력 받는다
+    const color = prompt("색상명을 입력하세요.");
+    // 배경색을 prompt로 입력 받는다
+    const back = prompt("배경 색상명을 입력하세요.");
+
+    const func = function (x, y, z) {
+      // 이름을 div 태그 안에 넣는다. innerHTML 이용
+      const divEl = document.querySelector("#name");
+      divEl.innerHTML = x;
+      // 이름의 색을 입력받은 색상명으로 바꾼다. style.color
+      divEl.style.color = y;
+      // 이름의 색을 입력받은 배경 색상명으로 바꾼다. style.backgroundColor
+      divEl.style.backgroundColor = z;
+    };
+
+    func(userName, color, back);
+  </script>
+</html>

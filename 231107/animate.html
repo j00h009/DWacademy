@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>animate</title>
+  </head>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <body>
+    <div
+      id="div"
+      style="
+        background-color: green;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+      "
+    >
+      DIV
+    </div>
+  </body>
+  <script>
+    $("#div").on("click", function () {
+      //   $("#div").animate({ left: "250px" });
+      //   $("#div").animate({
+      //     left: "250px",
+      //     opacity: "0.3",
+      //     height: "300px",
+      //     width: "300px",
+      //   });
+      $("#div").animate({ height: "600px", opacity: 0.3, fontSize: "2em" });
+      $("#div").animate({ width: "600px", opacity: 0.8, fontSize: "3em" });
+      $("#div").animate({ height: "200px", opacity: 0.3, fontSize: "4em" });
+      $("#div").animate({ width: "200px", opacity: 0.8, fontSize: "5em" });
+    });
+  </script>
+</html>

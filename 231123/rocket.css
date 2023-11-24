@@ -1,0 +1,125 @@
+/* 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+
+body {
+  background-color: #2f2f2f;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  /* 카테고리 별 같은 항목 묶어주기 => relative, absolute */
+}
+
+.scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 
+  scene을 body 화면 정 가운데에 맞춰주는 효과 
+  translate(-50%, -50%) 가로세로(자기자신을 이동)
+  */
+  width: 400px;
+  height: 400px;
+  background-color: #3b93ff;
+  border: 20px solid white;
+  border-radius: 50%;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  animation: animateScene 5s linear infinite;
+}
+
+/* :: Psedo-elements 가상요소 (before/after) => content: "" (빈문자열)를 필수로 써야함 */
+
+.scene::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* 아이콘은 폰트사이즈의 개념 -> 크기를 지정하려면 폰트사이즈로 입력하여 변경 */
+.fa-rocket {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateZ(-45deg);
+  /*
+  transform 을 2개 이상 사용할때는 한줄에 작성할 것.
+  translate : 위치
+  rotate : 각도
+   */
+  font-size: 10rem;
+  color: #fff;
+  text-shadow: -10px 10px 10px rgba(0, 0, 0, 0.2);
+  animation: animateRocket 0.2s linear infinite;
+}
+
+.cloud {
+  position: absolute;
+  color: #ccc;
+  animation: animateCloud 1s linear infinite;
+  /* z-index: -1; */
+}
+
+.cloud1 {
+  left: 10%;
+  font-size: 6rem;
+}
+.cloud2 {
+  left: 45%;
+  font-size: 3rem;
+  z-index: -1;
+}
+.cloud3 {
+  top: 10%;
+  right: 15%;
+  font-size: 5rem;
+}
+
+@keyframes animateRocket {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(-45deg);
+  }
+  50% {
+    transform: translate(-50%, -45%) rotateZ(-45deg);
+  }
+  100% {
+    transform: translate(-50%, -45%) rotateZ(-45deg);
+  }
+}
+
+@keyframes animateCloud {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@keyframes animateScene {
+  0% {
+    background-color: #b339ff;
+  }
+  30% {
+    background-color: #3b93ff;
+  }
+  70% {
+    background-color: #3b93ff;
+  }
+  100% {
+    background-color: #b339ff;
+  }
+  /* 애니메이션에선 반드시 숫자코드로 입력할것 */
+}

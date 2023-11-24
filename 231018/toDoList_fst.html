@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDoList 초안</title>
+  </head>
+  <style>
+    div {
+      width: 300px;
+      height: 600px;
+      border: 2px solid #c5c5c5;
+      border-radius: 10px;
+      position: absolute;
+      top: 100px;
+      left: 200px;
+      padding: 0 10px;
+      overflow: auto;
+    }
+    p {
+      background-color: yellow;
+      padding: 10px 5px;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <input id="input" placeholder="To Do List" />
+    <button onclick="clickFunc()">CLICK</button>
+    <div></div>
+  </body>
+  <script>
+    const input = document.querySelector("#input");
+    const div = document.querySelector("div");
+    const clickFunc = function () {
+      const pTag = document.createElement("p");
+      pTag.innerHTML = input.value;
+      //   pTag.style.backgroundColor = "rgb(255,0,5)";
+      changeBackGroundColor(pTag);
+      div.append(pTag);
+      input.value = "";
+    };
+
+    const changeBackGroundColor = function (tag) {
+      const colorArr = [];
+      for (let i = 0; i < 3; i++) {
+        const randNum = parseInt(Math.random() * 256);
+        colorArr.push(randNum);
+      }
+      const luma =
+        0.2126 * colorArr[0] + 0.7152 * colorArr[1] + 0.0722 * colorArr[2];
+      console.log(luma);
+      //   console.log(colorArr);
+      tag.style.backgroundColor = `rgb(${colorArr.toString()})`;
+      tag.style.color = parseInt(luma) <= 155 ? "white" : "black";
+    };
+  </script>
+</html>

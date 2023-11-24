@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>input Image</title>
+  </head>
+  <script src="../resources/js/jquery-3.6.4.js"></script>
+  <body>
+    <button>이미지추가</button>
+  </body>
+  <script>
+    $("button").on("click", function () {
+      const imgArr = [
+        "검정시바.jpg",
+        "쇼핑백.jpg",
+        "시바.png",
+        "전원.png",
+        "한성컴퓨터.jpg",
+      ];
+      const randNum = parseInt(Math.random() * 5);
+      const img = $(
+        `<img src="../resources/img/${imgArr[randNum]}" width="200px" height="200px" style="border: 2px solid red;" />`
+      );
+      img.appendTo("body");
+    });
+  </script>
+</html>

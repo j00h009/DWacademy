@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>break문</title>
+  </head>
+  <body></body>
+  <script>
+    var msg = "";
+    for (var i = 0; i < 10; i++) {
+      if (i == 3) {
+        break;
+      }
+      msg += i + "<br>";
+      //   msg = msg + (i + "<br>");
+      // "" + "0<br>" + "1<br>" + "2<br>" + "3<br>"
+    }
+    document.write(msg);
+    document.write("<hr>");
+
+    let j = 0;
+    while (true) {
+      document.write(j + "<br>");
+      j++;
+      if (j == 5) {
+        break;
+      }
+    }
+  </script>
+</html>
