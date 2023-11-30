@@ -1,0 +1,41 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* 크롬계열의 브라우저 스크롤바 없애기 */
+::-webkit-scrollbar {
+  display: none;
+}
+.container {
+  width: 80vw;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 10px solid #555;
+  /* 파이어폭스 스크롤바 없애기 */
+  scrollbar-width: none;
+  /* 익스플로러 스크롤바 없애기 */
+  -ms-overflow-style: none;
+}
+
+.gallery {
+  height: 90vh;
+
+  display: grid;
+  grid-template-columns: repeat(10, 80vw);
+  column-gap: 1rem;
+
+  overflow: scroll;
+  scroll-snap-type: both mandatory;
+}
+
+.onDrag {
+  scroll-snap-type: unset;
+}
+
+li {
+  scroll-snap-align: center;
+  display: inline-block;
+  border-radius: 3px;
+}
