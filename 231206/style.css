@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 이미지들의 전체(container) */
+.items {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  /* user-select 웹페이지 내에 이미지 + 텍스트 스크롤(파랗게) 선택 금지 */
+}
+
+.items .item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  /* 버튼 애니메이션의 정석 시간 : 0.3s */
+}
+
+.items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 비율상관 x -> 이미지 채울 것 */
+}
+
+.item.active {
+  opacity: 1;
+  z-index: 99;
+  /* 전체페이지에서 무조건 앞에 떠야하는 녀석들은 100, 1000을 주는데,
+  최고의 아래, 그 다음 중요한 요소를 99, 999라고 쓴다. */
+  box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+}
+
+.item.prev {
+  opacity: 0.3;
+  z-index: 2;
+  transform: translate(-125%, -50%);
+}
+.item.next {
+  opacity: 0.3;
+  z-index: 2;
+  transform: translate(25%, -50%);
+  /* -50% -75% */
+}
+
+.items .button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: space-between;
+
+  width: 550px;
+  /* border: 2px solid red; */
+  /* 버튼 요소 확인 */
+
+  z-index: 100;
+}
+
+.button-container .button {
+  color: white;
+  font-size: 50px;
+  cursor: pointer;
+
+  position: relative;
+
+  opacity: 0.75;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-container .button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 70px;
+  height: 70px;
+
+  background-color: #333;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.button-container .button:hover {
+  opacity: 1;
+}

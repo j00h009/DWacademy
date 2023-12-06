@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 배열
+      const colors = ["black", "red", "blue"];
+      const nums = [1, 2, 3, 4];
+      const colorsNums = [...colors, ...nums];
+      console.log(colorsNums); // ["black", "red", "blue", 1, 2, 3, 4]
+      console.log(colorsNums.length);
+
+      // 객체
+      const user = {
+        name: "steve",
+        age: 20,
+        gender: "male",
+      };
+      const newUser = { ...user };
+      //   const newUser = user;
+      newUser.age = 30;
+      console.log(user);
+      console.log(newUser);
+
+      // 객체의 키는 값이 같을 수 없다.
+      // spreadOperator : 객체 내의 특정 키밸류만 수정하는 용도. 한줄코드가능!!!
+      const user2 = { ...user, name: "Tom" };
+      console.log(user2);
+    </script>
+  </body>
+</html>
