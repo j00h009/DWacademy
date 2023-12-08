@@ -5,12 +5,12 @@ const boxVariants = {
   phase1: {
     scale: 0,
     rotateZ: 0,
-    transition: { type: "linear", delay: 1, duration: 1 },
+    transition: { type: "linear", delay: 1 },
   },
   phase2: {
     scale: 1,
     rotateZ: 360,
-    transition: { type: "spring", delay: 1, duration: 1 },
+    transition: { type: "spring", delay: 1 },
   },
 };
 
