@@ -1,0 +1,10 @@
+<Framer Motion>
+
+1. animation event
+
+2. AnimatePresence
+: 여러가지 변하는 수치
+
+3. MotionValue
+
+4. MotionAnimationControl

@@ -24,8 +24,11 @@ body {
   width: 5vmin;
   height: 100%;
   background-color: cornsilk;
-  -webkit-transform-origin-y: 0;
-  -moz-transform-origin: 0 0;
+  transform-origin: 0 0;
+  /* 맨 밑에서 시작할 경우 : transform-origin: 0 100%; */
+  /* (x축 y축) */
+  /* -webkit-transform-origin-y: 0;
+  -moz-transform-origin: 0 0; */
 }
 
 /* 
