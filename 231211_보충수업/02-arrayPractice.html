@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-arrayPractice</title>
+  </head>
+  <body></body>
+  <script>
+    // 1. forEach (반환하는게 없음.)
+    const arr = [10, 20, 30, 40, 50];
+    let sum = 0;
+    // arr.forEach(function (v) {
+    // function (value, index, array) => index, array는 지금 쓰지 않으므로 삭제
+    // console.log(`value: ${value}, index: ${index}, array: ${array}`);
+    // ↓ 아래를 줄이기 전 sum = sum + value;
+    //   sum += value;
+    // });
+    arr.forEach((v) => {
+      sum += v;
+    });
+
+    console.log(sum);
+
+    // 2. map() 함수
+    // 해당 배열의 모든 요소에 대하여 반복적으로 명시된 콜백 함수를 실행한 후,
+    // 그 실행 결과를 새로운 배열에 담아 반환한다.
+    // [30, 60, 90, 120, 150] 새로운 배열에 3씩 곱하기
+
+    // const newArr = [];
+    // arr.forEach((v) => {
+    //   newArr.push(v * 3);
+    // });
+
+    // const newArr = arr.map((v) => {
+    //   return v * 3;
+    // });
+    // ↑ 위  내용을 줄인 것
+    const newArr = arr.map((v) => v * 3);
+    console.log(newArr);
+
+    const objArr = [
+      { id: 1, name: "홍길동" },
+      { id: 2, name: "진달래" },
+      { id: 3, name: "임꺽정" },
+    ];
+
+    const nameArr = objArr.map(function (v) {
+      // console.log(v); => v는 객체다.
+      return v.name;
+    });
+    console.log(nameArr);
+
+    // 4. reduce() 함수(하나의 단일 값만 반환해준다.)
+    // 해당 배열의 모든 요소를 하나의 값으로 줄이기 위해, 두개의 인수를 전달받는 콜백 함수를 실행한다.
+    // 이 때 명시된 콜백함수에 배열의 첫번째 요소와 두번째 요소를 인수로 전달하고 실행한다.
+    // 그 결과 반환된 결과값에 세번째 요소를 다시 인수로 전달하고 실행한다.
+    // const arr = [10, 20, 30, 40, 50];
+
+    // const arrSum = arr.reduce(function (prevValue, curValue, curIdx, array) {
+    // console.log(
+    //   `prevValue : ${prevValue}, curValue: ${curValue}, curIdx: ${curIdx}, array: ${array}`
+    // );
+    //   return prevValue + curValue;
+    // });
+
+    // 1은 초기값 역할을 한다.
+    // const arrSum = arr.reduce((a, b) => a + b, 1);
+    // console.log(arrSum);
+    const arrSum = arr.reduce((a, b) => a - b);
+    console.log(arrSum);
+  </script>
+</html>

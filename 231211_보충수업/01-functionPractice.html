@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-functionPractice</title>
+  </head>
+  <body></body>
+  <script>
+    // var, let, const
+    // let : 재할당 가능
+    // const : 재할당 불가능
+    let z = 2;
+
+    // 함수선언식
+    function A(a, b) {
+      //   console.log(a + b + B(a, b));
+      //   console.log(a - b);
+      z = a - b;
+    }
+
+    function B(a, b, ...args) {
+      // 유사배열
+      console.log(args);
+      return a + b;
+    }
+
+    const B = (a, b, ...args) => {
+      return a + b;
+    };
+    // ↑ 위 내용을 줄인 것
+    const B = (a, b, ...args) => a + b;
+    // 객체를 담을 때
+    const B = (a, b, ...args) => ({ a: a + b, b: a - b });
+
+    const B = (a) => {
+      return a + 20;
+    };
+    // ↑ 위  내용을 줄인 것
+    const B = (a) => a + 20;
+
+    // console.log(A(2, 5) + B(10, 3));
+    // const resultA = A(2, 5);
+    // const resultB = B(10, 3);
+    // console.log(resultA + resultB);
+
+    // console.log(z);
+    // A(10, 3);
+    // console.log(z);
+
+    // if (true) {
+    //   let test = 0;
+    //   test = 1;
+
+    //   const test2 = 1;
+    //   // test2 = 3;
+
+    //   // let x;
+    //   // const y;
+    //   console.log(test);
+    // }
+
+    // function sumArr(arr) {
+    //   arr.forEach((v) => {
+    //     return (z += v);
+    //   });
+    // }
+
+    // const arr = [1, 2, 3, 4, 5];
+    // sumArr(arr);
+    // console.log(z);
+
+    // console.log(B(2, 5, 8, 10, 11, 12, 13));
+  </script>
+</html>
