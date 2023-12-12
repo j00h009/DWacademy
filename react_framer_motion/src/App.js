@@ -5,12 +5,13 @@
 // import { Scroll } from "./components/Scroll";
 // import { Event } from "./components/Event";
 // import { MyAnimatePresence } from "./components/AnimatePresence";
-import { MotionValue } from "./components/MotionValue";
+// import { MotionValue } from "./components/MotionValue";
+import { MotionValue2 } from "./components/MotionValue2";
 
 function App() {
   return (
     <>
-      <MotionValue />
+      <MotionValue2 />
     </>
   );
 }
