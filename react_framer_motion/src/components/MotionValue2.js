@@ -7,7 +7,10 @@ import {
 } from "framer-motion";
 
 export function MotionValue2() {
-  const MotionValue = useMotionValue(0);
+  const motionValue = useMotionValue(0);
+
+  const scale = useTransform(motionValue, [-300, 0, 300], [1.3, 1, 0.7]);
+  const opacity = useTransform(motionValue, [-300, 0, 300], [0.1, 1, 0.1]);
   const background = useTransform(
     motionValue,
     [-200, 200],
@@ -20,7 +23,12 @@ export function MotionValue2() {
     <>
       <div className="container">
         <div className="bigbox">
-          <motion.div className="box" drag="x" dragSnapToOrigin>
+          <motion.div
+            className="box"
+            drag="x"
+            dragSnapToOrigin
+            style={{ x: motionValue, background, scale, opacity }}
+          >
             <p className="text">Drag Me</p>
           </motion.div>
         </div>
