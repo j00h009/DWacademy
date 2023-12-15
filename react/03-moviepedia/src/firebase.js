@@ -10,7 +10,10 @@ import {
   doc,
   deleteDoc,
   updateDoc,
-  deleteField,
+  query,
+  orderBy,
+  limit,
+  startAfter,
 } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
 
@@ -27,9 +30,32 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getDatas(collectionName) {
-  const querySnapshot = await getDocs(collection(db, collectionName));
-  const result = querySnapshot.docs;
+async function getDatas(collectionName, order, limitNum, lq) {
+  // const querySnapshot = await getDocs(collection(db, collectionName));
+  let docQuery;
+  if (lq === undefined) {
+    docQuery = query(
+      collection(db, collectionName),
+      // 정렬
+      orderBy(order, "desc"),
+      // 가져올 수(제한갯수)
+      limit(limitNum)
+    );
+  } else {
+    docQuery = query(
+      collection(db, collectionName),
+      // 정렬
+      orderBy(order, "desc"),
+      // 가져올 수(제한갯수)
+      startAfter(lq),
+      limit(limitNum)
+    );
+  }
+
+  const querySnapshot = await getDocs(docQuery);
+  // 쿼리 query
+  // order(한,두개가 들어갈 수 있음), limit, startAfter
+  // ASC(오름차순), DESC(내림차순)
   //  console.log(result[0].data());
   //  result에는 배열이(querySnapshot) 담겨있다.
 
@@ -40,12 +66,21 @@ async function getDatas(collectionName) {
   // [Snapshot1, Snapshot2, ..., Snapshot3]
   // result[0].data();
 
+  const result = querySnapshot.docs;
+  const lastQuery = result[result.length - 1];
+  console.log(lastQuery);
   //   result.map((doc) => {
   //     return doc.data();
   //   });
   // ↓ 위 내용을 줄인 것
   const reviews = result.map((doc) => doc.data());
-  return { reviews };
+  // {
+  //   reviews:[]
+  // }
+  // return은 하나만 할 수 있다.
+
+  const option = "";
+  return { reviews, lastQuery };
 }
 
 export {
@@ -58,5 +93,7 @@ export {
   doc,
   deleteDoc,
   updateDoc,
-  deleteField,
+  // query,
+  // orderBy,
+  // limit,
 };

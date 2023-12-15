@@ -1,12 +1,16 @@
 import { getDatas } from "../firebase";
 import mockItems from "../mock.json";
 import ReviewList from "./ReviewList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+// 상수(변하지 않는 수)
+const LIMIT = 5;
 
 // 페이지에서 중추 역할을 하는 데이터들을 넣어둔다.
 function App() {
   const [items, setItems] = useState([]);
   const [order, setOrder] = useState("createdAt");
+  const [lq, setLq] = useState({});
 
   // sort 함수에 아무런 야규먼트(arguments)도 전달하지 않을 때는 기본적으로 유니코드에 정의된 문자열 순서에 따라 정렬된다.
   // sort 함수는 파라미터(compareFunction)가 입력되지 않으면, 유니코드 순서에 따라서 값을 정렬합니다.
@@ -27,7 +31,8 @@ function App() {
 
   // order = createdAt
   // a.createdAt == a[order];
-  const sortedItems = items.sort((a, b) => b[order] - a[order]);
+  // const sortedItems = items.sort((a, b) => b[order] - a[order]);
+  // sort는 파이어베이스에서 하기 때문에 사용안해도 됨
 
   // 내림차순
   // 최신개봉일
@@ -53,12 +58,37 @@ function App() {
     setItems(nextItems);
   };
 
-  const handleLoadClick = async () => {
+  const handleLoad = async (lq) => {
+    console.log(lq);
+    const { reviews, lastQuery } = await getDatas("movie", order, LIMIT, lq);
+    if (lq === undefined) {
+      setItems(reviews);
+    } else {
+      setItems((prevItems) => [...prevItems, ...reviews]);
+    }
+    setLq(lastQuery);
+    // reviews라고 이름을 쓰기싫고 result로 변경하고 싶을 경우 { reviews : result } 라고 변경해준다.
+    // 디폴트값을 주고 싶을 경우 { reviews : result = 0 }
+
     // {
     //   reviews:[]
     // }
-    const { reviews } = await getDatas("movie");
+    // reviews = 객체
+    // const result = await getDatas("movie");
+    // const reviews = result.reviews;
+    // ↓ 구조분해할당
+    // const { reviews } = result;
   };
+  const handleLoadMore = () => {
+    handleLoad(lq);
+  };
+  // useEffect 는 arguments 로 콜백함수와 배열을 넘겨준다.
+  // []은 dependency list 라고 하는데 위에서 handleLoad 함수가 무한루프 작동을 하기 때문에 처리를 해줘야 하는데
+  // 리액트는 [] 안에 있는 값들을 앞에서 기억한 값이랑 비교한다.
+  // 비교해서 다른경우에만 콜백함수를 실행한다.(그 전에는 콜백함수를 등록만 해놓음)
+  useEffect(() => {
+    handleLoad();
+  }, [order]);
 
   return (
     <div>
@@ -66,8 +96,8 @@ function App() {
         <button onClick={handleNewestClick}>최신순</button>
         <button onClick={handleBestClick}>베스트순</button>
       </div>
-      <ReviewList items={sortedItems} onDelete={handleDelete} />
-      <button onClick={handleLoadClick}>불러오기</button>
+      <ReviewList items={items} onDelete={handleDelete} />
+      <button onClick={handleLoadMore}>더보기</button>
     </div>
   );
 }

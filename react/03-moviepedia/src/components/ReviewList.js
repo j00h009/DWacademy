@@ -2,14 +2,13 @@ import "./ReviewList.css";
 
 function formatDate(value) {
   const date = new Date(value);
-  console.log(date);
-  return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} `;
+  // console.log(date);
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()} `;
 }
 
 // 데이터를 받을 파라미터들은 여기(js)에 있음.
 function ReviewListItem({ item, onDelete }) {
   const handDeleteClick = () => onDelete(item.id);
-
   return (
     <div className="ReviewListItem">
       <img className="ReviewListItem-img" src={item.imgUrl} />
@@ -33,7 +32,6 @@ function ReviewList({ items, onDelete }) {
           // 삭제같은 기능이 있을때는 react를 위해 key 값을 써줘야한다.
           <li key={item.id}>
             <ReviewListItem item={item} onDelete={onDelete} />
-            <input type="text" />
           </li>
         );
       })}
