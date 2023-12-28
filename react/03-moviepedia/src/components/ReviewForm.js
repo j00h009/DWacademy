@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FileInput from "./FileInput";
 import RatingInput from "./RatingInput";
+import useTranslate from "../hooks/useTranslate";
 
 const INITIAL_VALUES = {
   title: "",
@@ -19,6 +20,7 @@ function ReviewForm({
   const [values, setValues] = useState(initialValues);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittingError, setSubmittingError] = useState(null);
+  const t = useTranslate();
 
   const handleChange = (name, value) => {
     setValues((prevValues) => ({ ...prevValues, [name]: value }));
@@ -93,9 +95,8 @@ function ReviewForm({
         name="title"
         value={values.title}
         onChange={handleInputChange}
+        placeholder={t("title placeholder")}
       />
-      {/* oninput 이벤트는 input 태그 안의 값들이 변경 될때마다 이벤트가 발생한다. */}
-      {/* onchange 이벤트는 input 태그의 포커스를 벗어났을때 (즉, 입력이 끝났을때) 발생하는 이벤트이다. */}
       <RatingInput
         type="number"
         name="rating"
@@ -106,10 +107,11 @@ function ReviewForm({
         name="content"
         value={values.content}
         onChange={handleInputChange}
+        placeholder={t("content placeholder")}
       />
-      {onCancel && <button onClick={onCancel}>취소</button>}
+      {onCancel && <button onClick={onCancel}>{t("cancel button")}</button>}
       <button type="submit" disabled={isSubmitting}>
-        확인
+        {t("confirm button")}
       </button>
       {submittingError?.message && <div>{submittingError.message}</div>}
     </form>

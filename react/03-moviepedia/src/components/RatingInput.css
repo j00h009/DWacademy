@@ -1,12 +1,3 @@
 .RatingInput {
   cursor: pointer;
 }
-
-.Rating-star {
-  color: slategray;
-  font-size: 32px;
-}
-
-.Rating-star.selected {
-  color: red;
-}

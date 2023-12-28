@@ -3,13 +3,28 @@ import mockItems from "../mock.json";
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
 import { useEffect, useState } from "react";
-import "./ReviewForm.css";
+// import "./ReviewForm.css";
 import LocaleSelect from "./LocaleSelect";
-import LocaleProvider from "../contexts/LocaleContext";
-import LocaleContext from "../contexts/LocaleContext";
+import { LocaleProvider } from "../contexts/LocaleContext";
+import useTranslate from "../hooks/useTranslate";
+import logoImg from "../assets/logo.png";
+import "./App.css";
+import ticketImg from "../assets/ticket.png";
 
 // 상수(변하지 않는 수)
 const LIMIT = 5;
+
+function AppSortButton({ selected, children, onClick }) {
+  return (
+    <button
+      disabled={selected}
+      className={`AppSortButton ${selected ? "selected" : ""}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
 
 // 페이지에서 중추 역할을 하는 데이터들을 넣어둔다.
 function App() {
@@ -23,6 +38,7 @@ function App() {
   // null = loadingError
   const [hasNext, setHasNext] = useState(false);
   // const [locale, setLocale] = useState("ko");
+  const t = useTranslate();
 
   // sort 함수에 아무런 야규먼트(arguments)도 전달하지 않을 때는 기본적으로 유니코드에 정의된 문자열 순서에 따라 정렬된다.
   // sort 함수는 파라미터(compareFunction)가 입력되지 않으면, 유니코드 순서에 따라서 값을 정렬합니다.
@@ -49,7 +65,6 @@ function App() {
   // 내림차순
   // 최신개봉일
   const handleNewestClick = () => setOrder("createdAt");
-
   // 평점
   const handleBestClick = () => setOrder("rating");
 
@@ -145,37 +160,68 @@ function App() {
   }, [order]);
 
   return (
-    <LocaleProvider defaultValue="ko">
-      <div>
-        <LocaleSelect />
-        <div>
-          <button onClick={handleNewestClick}>최신순</button>
-          <button onClick={handleBestClick}>베스트순</button>
+    <div className="App">
+      <nav className="App-nav">
+        <div className="App-nav-container">
+          <img className="App-logo" src={logoImg} alt="movie pedia logo" />
+          <LocaleSelect />
         </div>
-        <ReviewForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
-        <ReviewList
-          items={items}
-          onDelete={handleDelete}
-          onUpdate={updateDatas}
-          onUpdateSuccess={handleUpdateSuccess}
-        />
-        {hasNext && (
-          <button disabled={isLoading} onClick={handleLoadMore}>
-            더 보기
-          </button>
-        )}
-        {
-          // 에러가 있을 시 나타낼 요소, 텍스트들을 출력
-          // 조건부 연산자
-          // AND : 앞에 나오는 값이 true 이면 렌더링
-          // OR : 앞에 나오는 값이 false 이면 렌더링
-          // falsy ==> null, NaN, 0, 빈 문자열, undefined
+      </nav>
+      <div className="App-container">
+        <div
+          className="App-ReviewForm"
+          style={{ backgroundImage: `url("${ticketImg}")` }}
+        >
+          <ReviewForm onSubmit={addDatas} onSubmitSuccess={handleAddSuccess} />
+        </div>
+        <div className="App-sorts">
+          <AppSortButton
+            onClick={handleNewestClick}
+            selected={order === "createdAt"}
+          >
+            {t("newest")}
+          </AppSortButton>
+          <AppSortButton
+            onClick={handleBestClick}
+            selected={order === "rating"}
+          >
+            {t("best")}
+          </AppSortButton>
+        </div>
+        <div className="App-ReviewList">
+          <ReviewList
+            items={items}
+            onDelete={handleDelete}
+            onUpdate={updateDatas}
+            onUpdateSuccess={handleUpdateSuccess}
+          />
+          {hasNext && (
+            <button
+              className="App-load-more-button"
+              disabled={isLoading}
+              onClick={handleLoadMore}
+            >
+              {t("load more")}
+            </button>
+          )}
+          {
+            // 에러가 있을 시 나타낼 요소, 텍스트들을 출력
+            // 조건부 연산자
+            // AND : 앞에 나오는 값이 true 이면 렌더링
+            // OR : 앞에 나오는 값이 false 이면 렌더링
+            // falsy ==> null, NaN, 0, 빈 문자열, undefined
 
-          loadingError !== null ? <span>{loadingError.message}</span> : ""
-          // loadingError?.message && <span>{loadingError.message}</span>
-        }
+            loadingError !== null ? <span>{loadingError.message}</span> : ""
+            // loadingError?.message && <span>{loadingError.message}</span>
+          }
+        </div>
       </div>
-    </LocaleProvider>
+      <footer className="App-footer">
+        <div className="App-footer-container">
+          {t("terms of service")} | {t("privacy policy")}
+        </div>
+      </footer>
+    </div>
   );
 }
 
