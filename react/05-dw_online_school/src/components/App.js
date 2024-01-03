@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import styles from "./App.module.css";
+import "./App.font.css";
 import Footer from "./Footer";
 
 // 리액트 라우터 outlet

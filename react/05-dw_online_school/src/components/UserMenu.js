@@ -13,13 +13,21 @@ function UserMenu() {
 
   // 리액트 버블링(위로올라가는 현사) 현상 막기
   useEffect(() => {
+    if (!isOpen) return;
     const handleCilckOutside = () => setIsOpen(false);
+    // const handleCilckOutside = () => {
+    //   alert("click event handler");
+    // };
 
+    // 제거 해주는 부분(alert 두번 반복하는 것을)
     window.addEventListener("click", handleCilckOutside);
-  }, []);
+    return () => {
+      window.removeEventListener("click", handleCilckOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className={styles.UserMenu}>
+    <div className={styles.userMenu}>
       <button className={styles.iconButton} onClick={handleButtonClick}>
         <img src={personIcon} alt="유저 메뉴" />
       </button>
