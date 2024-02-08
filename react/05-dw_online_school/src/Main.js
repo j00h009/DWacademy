@@ -1,9 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./components/App";
-import Homepage from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import CourseListPage from "./pages/CourseListPage";
 import QuestionListPage from "./pages/QuestionListPage";
 import CoursePage from "./pages/CoursePage";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import WishlistPage from "./pages/WishlistPage";
 
 // swich case 문
 //  / : 절대경로
@@ -16,15 +19,18 @@ function Main() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Homepage />} />
+          <Route index element={<HomePage />} />
           <Route path="courses">
             <Route index element={<CourseListPage />} />
-            <Route path=":courseSulg" element={<CoursePage />} />
+            <Route path=":courseSlug" element={<CoursePage />} />
           </Route>
           <Route path="questions">
             <Route index element={<QuestionListPage />} />
             {/* <Route path="" element={<CourseListPage />} /> */}
           </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="logout" element={<Logout />} />
+          <Route path="wishlist" element={<WishlistPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

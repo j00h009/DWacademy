@@ -19,6 +19,17 @@ function Button({ className, variant, isDiv, ...restProps }) {
     );
   //   console.log(styles[variant]);
   // style.css안에 class는 객체의 key 값을 동적으로 바꾸고 싶을 때 사용한다.
+
+  return (
+    <button
+      {...restProps}
+      className={classNames(
+        styles.button,
+        variant && styles[variant],
+        className
+      )}
+    />
+  );
 }
 
 export default Button;

@@ -1,12 +1,16 @@
+import { Link } from "react-router-dom";
 import personIcon from "../assets/person.png";
 import styles from "./UserMenu.module.css";
 import { useEffect, useState } from "react";
+import { useMember } from "../contexts/MemberContext";
 
 function UserMenu() {
+  // const member = useMember();
+  // console.log(member);
   const [isOpen, setIsOpen] = useState(false);
+  const isLogined = JSON.parse(localStorage.getItem("member"));
 
   const handleButtonClick = (e) => {
-    // setIsOpen(true);
     e.stopPropagation();
     setIsOpen(!isOpen);
   };
@@ -14,15 +18,16 @@ function UserMenu() {
   // 리액트 버블링(위로올라가는 현사) 현상 막기
   useEffect(() => {
     if (!isOpen) return;
-    const handleCilckOutside = () => setIsOpen(false);
-    // const handleCilckOutside = () => {
+    const handleClickOutside = () => setIsOpen(false);
+    // const handleClickOutside = () => {
     //   alert("click event handler");
     // };
 
     // 제거 해주는 부분(alert 두번 반복하는 것을)
-    window.addEventListener("click", handleCilckOutside);
+    window.addEventListener("click", handleClickOutside);
+
     return () => {
-      window.removeEventListener("click", handleCilckOutside);
+      window.removeEventListener("click", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -33,9 +38,19 @@ function UserMenu() {
       </button>
       {isOpen && (
         <ul className={styles.popup}>
-          <li>위시리스트</li>
+          <Link to="/wishlist">
+            <li>위시리스트</li>
+          </Link>
           <li className={styles.disabled}>회원가입</li>
-          <li>로그인</li>
+          {!isLogined ? (
+            <Link to="/login">
+              <li>로그인</li>
+            </Link>
+          ) : (
+            <Link to="/logout">
+              <li>로그아웃</li>
+            </Link>
+          )}
         </ul>
       )}
     </div>
